@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">petrolao</string>
+
+    <string-array name="array_combustiveis">
+        <item>comun</item>
+        <item>aditivada</item>
+        <item>podium</item>
+        <item>etanol</item>
+        <item>diesel</item>
+    </string-array>
+
+</resources>
