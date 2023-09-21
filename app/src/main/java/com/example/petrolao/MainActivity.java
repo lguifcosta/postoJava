@@ -22,26 +22,25 @@ public class MainActivity extends AppCompatActivity {
     private Spinner combustiveis;
     private EditText precoComb;
     private TextView precoFinal;
-    private Button pagar;
-    private int selected;
+    private int selected =0;
     private RadioGroup payGroup;
     private double desconto = 0.95;
     private double[] precos = {5.84,5.70,9.60,3.59,6.20};
+    private Toast toast;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CharSequence text = "Hello toast!";
+        CharSequence text = "Transação finalizada!";
         int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(this /* MyActivity */, text, duration);
+        toast = Toast.makeText(this /* MyActivity */, text, duration);
 
         //variaveis do front
         litros = (EditText) findViewById(R.id.litros);
 
         combustiveis = (Spinner) findViewById(R.id.combustiveis);
-
 
         payGroup = (RadioGroup) findViewById(R.id.payGroup);
 
@@ -49,11 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         precoFinal = (TextView) findViewById(R.id.precoFinal);
 
-        pagar = (Button) findViewById(R.id.pagar);
-
-
-
-        selected = 0;
 
         //configuração do spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.array_combustiveis, android.R.layout.simple_spinner_item);
@@ -106,14 +100,12 @@ public class MainActivity extends AppCompatActivity {
                 switch (option){
                     case "pix":
                         desconto = 1.05;
-                        toast.show();
                         break;
                     case "dinheiro":
                         desconto = 0.95;
                         break;
                     case "debito":
                         desconto = 1.05;
-                        toast.show();
                         break;
                     case "credito":
                         desconto = 1.1;
@@ -138,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
         DecimalFormat df = new DecimalFormat("#.##");
 
         precoFinal.setText("R$:"+Double.toString(result));
+
+        toast.show();
     }
 
 }
