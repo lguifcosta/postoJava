@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private int selected =0;
     private RadioGroup payGroup;
     private double desconto = 0.95;
-    private double[] precos = {5.84,5.70,9.60,3.59,6.20};
+    private double[] precos = {5.44,5.72,9.63,3.59,6.25};
     private Toast toast;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //Executa uma função ao mudar o spinner
+                precos[selected]=Double.valueOf(precoComb.getText().toString());
+
                 selected = position;
                 switch (position){
                     case 0:
@@ -129,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         result *= desconto;
         DecimalFormat df = new DecimalFormat("#.##");
 
-        precoFinal.setText("R$:"+Double.toString(result));
+        precoFinal.setText("R$:"+df.format(result));
 
         toast.show();
     }
