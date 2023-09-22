@@ -2,6 +2,7 @@ package com.example.petrolao;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.VoiceInteractor;
 import android.os.Bundle;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+import java.util.Optional;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -122,18 +124,25 @@ public class MainActivity extends AppCompatActivity {
         //finalização e calculo da transação
         double x, y, result;
 
-        x = Double.valueOf(litros.getText().toString());
-        y = Double.valueOf(precoComb.getText().toString());
 
-        precos[selected]=y;
 
-        result = x * y;
-        result *= desconto;
-        DecimalFormat df = new DecimalFormat("#.##");
+        if(litros.getText().length() == 0 || precoComb.getText().length()==0){
+            return;
+        }
 
-        precoFinal.setText("R$:"+df.format(result));
+            x = Double.valueOf(litros.getText().toString());
+            y = Double.valueOf(precoComb.getText().toString());
 
-        toast.show();
+            precos[selected] = y;
+
+            result = x * y;
+            result *= desconto;
+            DecimalFormat df = new DecimalFormat("#.##");
+
+            precoFinal.setText("R$:" + df.format(result));
+
+            toast.show();
+
     }
 
 }
