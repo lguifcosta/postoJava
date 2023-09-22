@@ -13,7 +13,8 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center">
 
         <LinearLayout
             android:id="@+id/texts"
@@ -74,7 +75,10 @@
                 <Spinner
                     android:id="@+id/combustiveis"
                     android:layout_width="200dp"
-                    android:layout_height="48dp" />
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    />
             </LinearLayout>
 
         </LinearLayout>
